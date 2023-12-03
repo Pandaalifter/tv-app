@@ -15,14 +15,17 @@
       font-family: sans-serif;
       background-color: white;
       color: black;
+      height: 100vh;
+    }
+
+    .grid-container{
       display: grid;
       grid-template-columns: 1fr 2fr; 
       grid-template-rows: 1fr auto auto; 
-      grid-template-areas:
-        "video lecture-list"
-        "video buttons"
-        "video description"; 
-      height: 100vh;
+    }
+
+    .grid-item{
+      padding: 5px;
     }
 
     lecture-slide-list {
@@ -63,10 +66,17 @@
 </head>
 
 <body>
-  <lecture-slide-list @lecture-slide-selected="${handleLectureSlideSelected}"></lecture-slide-list>
-  <lecture-screen></lecture-screen>
-  <lecture-buttons @previous-slide="${handlePreviousSlide}" @next-slide="${handleNextSlide}"></lecture-buttons>
-  <lecture-description></lecture-description>
+  <div class="grid-container">
+    <div class="grid-item">  
+      <lecture-screen></lecture-screen>
+      <lecture-buttons @previous-slide="${handlePreviousSlide}" @next-slide="${handleNextSlide}"></lecture-buttons>
+      <lecture-description></lecture-description>
+    </div>
+    <div class="grid-item">  
+      <lecture-slide-list @lecture-slide-selected="${handleLectureSlideSelected}"></lecture-slide-list>
+    </div>
+  
+</div>
 
   <script type="module" src="./src/tv-app.js"></script>
   <script type="module" src="./src/lecture-screen.js"></script>
